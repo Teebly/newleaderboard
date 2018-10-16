@@ -1,5 +1,7 @@
 import { Template } from "meteor/templating";
 import { ReactiveVar } from "meteor/reactive-var";
+import Foundation from "foundation-sites/dist/js/foundation.js";
+import "foundation-sites/dist/css/foundation.css";
 
 import "./main.html";
 
@@ -29,7 +31,7 @@ if (Meteor.isClient) {
   });
 
   Template.leaderboard.onRendered(function() {
-    //$(document).foundation();
+    $(document).foundation();
   });
 
   Template.leaderboard.events({
