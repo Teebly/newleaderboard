@@ -4,7 +4,6 @@ Meteor.startup(() => {
   // code to run on server at startup
 });
 
-//import Foundation from "foundation-sites";
 PlayersList = new Mongo.Collection("players");
 
 if (Meteor.isServer) {

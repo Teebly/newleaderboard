@@ -1,0 +1,24 @@
+body {
+  background-color: lightblue;
+}
+.formular {
+  width: 250px;
+}
+.content {
+  margin: 2%;
+}
+.player:hover {
+  background-color: blue;
+}
+.player {
+  width: fit-content;
+}
+.selected {
+  background-color: yellow;
+}
+ul {
+  list-style-type: none;
+}
+p {
+  color: red;
+}

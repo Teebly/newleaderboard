@@ -2,10 +2,9 @@ import { Template } from "meteor/templating";
 import { ReactiveVar } from "meteor/reactive-var";
 import Foundation from "foundation-sites/dist/js/foundation.js";
 import "foundation-sites/dist/css/foundation.css";
-
 import "./main.html";
+import "/client/styles/app.css";
 
-//import Foundation from "foundation-sites";
 PlayersList = new Mongo.Collection("players");
 
 if (Meteor.isClient) {
@@ -41,7 +40,6 @@ if (Meteor.isClient) {
     },
     "click .increment": function() {
       var selectedPlayer = Session.get("selectedPlayer");
-
       Meteor.call("updateScore", selectedPlayer, 5);
     },
     "click .decrement": function() {
@@ -104,7 +102,6 @@ Meteor.methods({
     var currentUserId = Meteor.userId();
     if (currentUserId) {
       let currentUser = PlayersList.findOne({ _id: selectedPlayer });
-      //one line missing. if(currentUser="")return;
       let currentScore = currentUser.score;
       if (currentScore + scoreValue < 0) {
         alert("Score can't be negative!");

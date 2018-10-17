@@ -1,44 +1,43 @@
 <head>
   <title>Leaderboard</title>
-  <!-- <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU"
-    crossorigin="anonymous"> -->
 </head>
 
 <body>
-  <h1>Leaderboard</h1>
-  <p>{{>loginButtons}}</p>
-  {{> leaderboard}}
-
-  <!-- <script src="js/jquery.min.js"></script>
-  <script src="js/foundation.min.js"></script>
-
-  <script src="js/vendor/jquery.js"></script>
-  <script src="js/vendor/what-input.js"></script>
-  <script src="js/vendor/foundation.js"></script>
-  <script src="js/app.js"></script> -->
+  <div class="title-bar">
+    <div class="title-bar-left">
+      <button class="menu-icon" type="button"></button>
+      <span class="title-bar-title">Leaderboard</span>
+    </div>
+    <div class="title-bar-right">{{>loginButtons}}</div>
+  </div>
+  <div class="content">{{> leaderboard}}</div>
 </body>
 
 <template name="leaderboard">
   {{#if currentUser}}
-  {{> addPlayerForm}}
+  <div class="formular">{{> addPlayerForm}}</div>
   <ul>
     {{#each player}}
     <li class="player {{selectedClass}}">{{name}}: {{score}}</li>
+
     {{/each}}
     {{#if selectedPlayer}}
-    <li>Selected Player: {{selectedPlayer.name}}</li>
-    <li><button class="increment">Give 5 Points</button>
-      <button class="decrement">Take 5 Points</button></li>
-    <li><button class="remove">Remove Player</button></li>
+    Selected Player: {{selectedPlayer.name}}
+    <br>
+    <button class="button success increment">Give 5 Points</button>
+    <button class="button warning decrement">Take 5 Points</button>
+    <br>
+    <button class="button alert remove">Remove Player</button>
     {{/if}}
   </ul>
   {{else}}
   <p>You must be logged-in to see this content.</p>
   {{/if}}
 </template>
+
 <template name="addPlayerForm">
   <form>
     <input type="text" name="playerName">
-    <input type="submit" value="Add Player">
+    <input class="button" type="submit" value="Add Player">
   </form>
 </template>
