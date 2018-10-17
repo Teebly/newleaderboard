@@ -8,7 +8,7 @@
       <button class="menu-icon" type="button"></button>
       <span class="title-bar-title">Leaderboard</span>
     </div>
-    <div class="title-bar-right">{{>loginButtons}}</div>
+    <div class="title-bar-right"></div>
   </div>
   <div class="content">{{> leaderboard}}</div>
 </body>
@@ -17,21 +17,15 @@
   {{#if currentUser}}
   <div class="formular">{{> addPlayerForm}}</div>
   <ul>
-    {{#each player}}
-    <li class="player {{selectedClass}}">{{name}}: {{score}}</li>
-
+    {{#each player in players}}
+    <li class="player {{selectedClass}}">
+      {{> PlayerCard currentPlayer=player}}
+    </li>
     {{/each}}
-    {{#if selectedPlayer}}
-    Selected Player: {{selectedPlayer.name}}
-    <br>
-    <button class="button success increment">Give 5 Points</button>
-    <button class="button warning decrement">Take 5 Points</button>
-    <br>
-    <button class="button alert remove">Remove Player</button>
-    {{/if}}
   </ul>
   {{else}}
   <p>You must be logged-in to see this content.</p>
+  <div>{{>loginButtons}}</div>
   {{/if}}
 </template>
 
@@ -40,4 +34,17 @@
     <input type="text" name="playerName">
     <input class="button" type="submit" value="Add Player">
   </form>
+</template>
+
+<template name="PlayerCard">
+  <div class="playerCard">
+    <div class="thePlayer">
+      {{currentPlayer.name}}: {{currentPlayer.score}}
+    </div>
+    <div class="playerButtons">
+      <button class="button success small increment">Give 5 Points</button>
+      <button class="button warning small decrement">Take 5 Points</button>
+      <button class="button alert small remove">Remove Player</button>
+    </div>
+  </div>
 </template>

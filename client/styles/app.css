@@ -1,5 +1,5 @@
 body {
-  background-color: lightblue;
+  background-color: #fefefe;
 }
 .formular {
   width: 250px;
@@ -8,17 +8,34 @@ body {
   margin: 2%;
 }
 .player:hover {
-  background-color: blue;
+  background-color: rgba(0, 0, 0, 0.03);
 }
 .player {
   width: fit-content;
-}
-.selected {
-  background-color: yellow;
+  line-height: 3rem;
 }
 ul {
   list-style-type: none;
 }
 p {
   color: red;
+}
+
+.playerCard {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.5rem 1rem;
+}
+.playerButtons {
+  display: none;
+}
+.playerCard:hover .playerButtons {
+  display: inline-flex;
+}
+
+.playerButtons .increment,
+.playerButtons .decrement,
+.playerButtons .remove {
+  margin-bottom: 0;
+  margin-left: 1rem;
 }
