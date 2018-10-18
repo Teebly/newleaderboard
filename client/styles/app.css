@@ -1,17 +1,33 @@
 body {
   background-color: lightblue;
 }
-.formular {
-  width: 250px;
-}
 .content {
-  margin: 2%;
+  margin: 0.5rem;
 }
-.player:hover {
-  background-color: blue;
+.formular {
+  width: 30rem;
+}
+p {
+  color: red;
 }
 .player {
   width: fit-content;
+  background-color: rgba(255, 255, 255, 0.185);
+  border: 0.05rem;
+  border-style: solid;
+  margin-bottom: 2rem;
+  padding-left: 0.5rem;
+  padding-right: 0.5rem;
+}
+.playerButtons {
+  opacity: 0;
+}
+.player:hover {
+  background-color: blue;
+  color: white;
+}
+.player:hover .playerButtons {
+  opacity: 1;
 }
 .selected {
   background-color: yellow;
@@ -19,6 +35,15 @@ body {
 ul {
   list-style-type: none;
 }
-p {
-  color: red;
+.button.success {
+  color: white;
+}
+.button.warning {
+  color: white;
+}
+.button.alert:hover {
+  color: black;
+}
+.button:hover {
+  color: black;
 }
