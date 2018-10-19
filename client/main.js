@@ -11,26 +11,11 @@ if (Meteor.isClient) {
   Template.leaderboard.helpers({
     players: function() {
       var currentUserId = Meteor.userId();
-<<<<<<< HEAD
       return PlayersList.find(
         { createdBy: currentUserId },
         { sort: { score: -1, name: 1 } }
       );
-=======
-      return PlayersList.find({ createdBy: currentUserId }, { sort: { score: -1, name: 1 } });
->>>>>>> f0d4066030e930cf13067575ce395c695cfea63d
     }
-    // selectedClass: function() {
-    //   var playerId = this._id;
-    //   var selectedPlayer = Session.get("selectedPlayer");
-    //   if (playerId == selectedPlayer) {
-    //     return "selected";
-    //   }
-    // },
-    // selectedPlayer: function() {
-    //   var selectedPlayer = Session.get("selectedPlayer");
-    //   return PlayersList.findOne({ _id: selectedPlayer });
-    // }
   });
 
   Template.leaderboard.onRendered(function() {
@@ -39,7 +24,6 @@ if (Meteor.isClient) {
 
   Template.PlayerCard.events({
     "click .increment": function(event, instance) {
-<<<<<<< HEAD
       Meteor.call("updateScore", instance.data.Player._id, 5);
     },
     "click .decrement": function(event, instance) {
@@ -47,16 +31,6 @@ if (Meteor.isClient) {
     },
     "click .remove": function(event, instance) {
       Meteor.call("removePlayer", instance.data.Player._id);
-=======
-      console.log("instance", instance);
-      Meteor.call("updateScore", instance.data.currentPlayer._id, 5);
-    },
-    "click .decrement": function() {
-      Meteor.call("updateScore", selectedPlayer, -5);
-    },
-    "click .remove": function() {
-      Meteor.call("removePlayer", selectedPlayer);
->>>>>>> f0d4066030e930cf13067575ce395c695cfea63d
     }
   });
   Template.addPlayerForm.events({
