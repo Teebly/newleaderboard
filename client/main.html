@@ -18,9 +18,9 @@
   <div class="formular">{{> addPlayerForm}}</div>
   <ul>
     {{#each player in players}}
-    <li class="player {{selectedClass}}">
-      {{> PlayerCard currentPlayer=player}}
-    </li>
+    <div class="player">
+      {{> PlayerCard Player=player}}
+    </div>
     {{/each}}
   </ul>
   {{else}}
@@ -41,13 +41,13 @@
 
 <template name="PlayerCard">
   <div class="playerCard">
-    <div class="thePlayer">
-      {{currentPlayer.name}}: {{currentPlayer.score}}
-    </div>
-    <div class="playerButtons">
+    <span class="thePlayer">
+      {{Player.name}}: {{Player.score}}
+    </span>
+    <span class="playerButtons">
       <button class="button success small increment">Give 5 Points</button>
       <button class="button warning small decrement">Take 5 Points</button>
       <button class="button alert small remove">Remove Player</button>
-    </div>
+    </span>
   </div>
 </template>
