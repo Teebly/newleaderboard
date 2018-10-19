@@ -8,7 +8,7 @@
       <button class="menu-icon" type="button"></button>
       <span class="title-bar-title">Leaderboard</span>
     </div>
-    <div class="title-bar-right">{{>loginButtons}}</div>
+    <div class="title-bar-right"></div>
   </div>
   <div class="content">{{> leaderboard}}</div>
 </body>
@@ -25,6 +25,7 @@
   </ul>
   {{else}}
   <p>You must be logged-in to see this content.</p>
+  <div>{{>loginButtons}}</div>
   {{/if}}
 </template>
 

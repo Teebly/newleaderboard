@@ -1,5 +1,5 @@
 body {
-  background-color: lightblue;
+  background-color: #fefefe;
 }
 .content {
   margin: 0.5rem;
@@ -10,36 +10,39 @@ body {
 p {
   color: red;
 }
-.player {
+.playerCard {
   width: fit-content;
+  text-align: center;
+
   background-color: rgba(255, 255, 255, 0.185);
   border: 0.05rem;
   border-style: solid;
   margin-bottom: 2rem;
-  padding-left: 0.5rem;
-  padding-right: 0.5rem;
+  padding: 0.5rem;
+}
+.playerCard:hover {
+  background-color: rgb(190, 190, 190);
+}
+.playerCard:hover .playerButtons {
+  opacity: 1;
 }
 .playerButtons {
   opacity: 0;
-}
-.player:hover {
-  background-color: blue;
-  color: white;
-}
-.player:hover .playerButtons {
-  opacity: 1;
-}
-.selected {
-  background-color: yellow;
-}
-ul {
-  list-style-type: none;
+  padding-left: 2rem;
 }
 .button.success {
   color: white;
+  background-color: rgba(100, 200, 100, 0.75);
+  margin-bottom: 0rem;
 }
 .button.warning {
   color: white;
+  background-color: rgb(235, 240, 120, 0.75);
+  margin-bottom: 0rem;
+}
+.button.alert {
+  margin-bottom: 0rem;
+  background-color: rgb(235, 100, 100, 0.75);
 }
 .button.alert:hover {
   color: black;
