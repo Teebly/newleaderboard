@@ -1,15 +1,30 @@
 body {
-  background-color: lightblue;
+  background-color: #fefefe;
 }
 .content {
+<<<<<<< HEAD
   margin: 0.5rem;
 }
 .formular {
   width: 30rem;
+=======
+  margin: 2%;
+}
+.player:hover {
+  background-color: rgba(0, 0, 0, 0.03);
+}
+.player {
+  width: fit-content;
+  line-height: 3rem;
+}
+ul {
+  list-style-type: none;
+>>>>>>> f0d4066030e930cf13067575ce395c695cfea63d
 }
 p {
   color: red;
 }
+<<<<<<< HEAD
 .playerCard {
   width: fit-content;
   text-align: center;
@@ -48,4 +63,24 @@ p {
 }
 .button:hover {
   color: black;
+=======
+
+.playerCard {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.5rem 1rem;
+}
+.playerButtons {
+  display: none;
+}
+.playerCard:hover .playerButtons {
+  display: inline-flex;
+}
+
+.playerButtons .increment,
+.playerButtons .decrement,
+.playerButtons .remove {
+  margin-bottom: 0;
+  margin-left: 1rem;
+>>>>>>> f0d4066030e930cf13067575ce395c695cfea63d
 }
