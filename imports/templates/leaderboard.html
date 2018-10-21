@@ -1,6 +1,8 @@
 <template name="leaderboard">
   {{#if currentUser}}
-  <div class="formular">{{> addPlayerForm}}</div>
+  <div class="formular">
+    <button class="button" data-open="exampleModal1">Add Player</button>
+  </div>
   <ul>
     <div class="values">
       <div>Firstname</div>
@@ -17,4 +19,14 @@
   {{else}}
   <p class="notloggedin">You must be logged-in to see this content.</p>
   {{/if}}
+
+  <div class="reveal" id="exampleModal1" data-reveal>
+    {{> addPlayerForm}}
+  </div>
+  <div class="reveal" id="exampleModal2" data-reveal>
+    {{> editPlayerForm}}
+  </div>
+  <div class="reveal" id="exampleModal3" data-reveal>
+    {{> removePlayerForm}}
+  </div>
 </template>

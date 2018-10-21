@@ -8,6 +8,7 @@ import "/imports/templates/leaderboard.html";
 import "/imports/templates/playerCard.html";
 import "/imports/templates/addPlayerForm.html";
 import "/imports/templates/editPlayerForm.html";
+import "/imports/templates/removePlayerForm.html";
 
 PlayersList = new Mongo.Collection("players");
 
@@ -44,12 +45,11 @@ if (Meteor.isClient) {
     $(document).foundation();
   });
   Template.addPlayerForm.events({
-    "click #submitPlayer": function(event) {
-      console.log("PREVENTED DEFAULT");
-      // event.preventDefault();
-      let playerNameVar = event.target.playerName.value;
-      let playerLastNameVar = event.target.playerLastName.value;
-      let disciplineVar = event.target.discipline.value;
+    "click .successButton": function(event) {
+      event.preventDefault();
+      let playerNameVar = $("[name=playerName]").val();
+      let playerLastNameVar = $("[name=playerLastName]").val();
+      let disciplineVar = $("[name=discipline] option:checked").val();
       let error = [];
       let exists = PlayersList.findOne({
         firstname: playerNameVar,
@@ -80,13 +80,19 @@ if (Meteor.isClient) {
           disciplineVar
         );
       }
-      event.target.playerName.value = "";
-      event.target.playerLastName.value = "";
+      // $("[name=playerName]").val() = "";
+      // $("[name=playerLastName]").val() = "";
     }
   });
 
   Template.editPlayerForm.onRendered(function() {
     $(document).foundation();
+  });
+
+  Template.addPlayerForm.helpers({
+    zehelper: function() {
+      console.log(" helper called ");
+    }
   });
 
   Template.editPlayerForm.events({
@@ -128,6 +134,19 @@ if (Meteor.isClient) {
       }
       event.target.playerName.value = "";
       event.target.playerLastName.value = "";
+    }
+  });
+  Template.removePlayerForm.onRendered(function() {
+    $(document).foundation();
+  });
+  Template.removePlayerForm.events({
+    "click #removePlayer": function(event) {
+      Meteor.call(
+        "removePlayer",
+        $("[name=playerName]").val(),
+        $("[name=playerLastName]").val(),
+        $("[name=discipline] option:checked").val()
+      );
     }
   });
 }

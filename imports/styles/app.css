@@ -49,19 +49,16 @@ body {
 .button:hover {
   color: black;
 }
-.input-group {
+.footer {
   display: flex;
-  flex-direction: column;
-}
-.editButton {
-  align-self: flex-end;
-}
-.successButton {
-  align-self: flex-end;
+  justify-content: flex-end;
 }
 .reveal {
   width: fit-content;
 }
 .button.small {
+  margin-bottom: 0rem;
+}
+.button.cancel {
   margin-bottom: 0rem;
 }
