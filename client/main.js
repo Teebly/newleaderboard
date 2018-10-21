@@ -2,18 +2,25 @@ import { Template } from "meteor/templating";
 import { ReactiveVar } from "meteor/reactive-var";
 import Foundation from "foundation-sites/dist/js/foundation.js";
 import "foundation-sites/dist/css/foundation.css";
-import "./main.html";
-import "/client/styles/app.css";
+import "/imports/main.html";
+import "/imports/styles/app.css";
+import "/imports/templates/leaderboard.html";
+import "/imports/templates/playerCard.html";
+import "/imports/templates/addPlayerForm.html";
+import "/imports/templates/editPlayerForm.html";
 
 PlayersList = new Mongo.Collection("players");
 
+const disciplines = ["Football", "Ice Hockey", "Athletics"];
+
 if (Meteor.isClient) {
+  Meteor.subscribe("thePlayers");
   Template.leaderboard.helpers({
     players: function() {
-      var currentUserId = Meteor.userId();
+      let currentUserId = Meteor.userId();
       return PlayersList.find(
         { createdBy: currentUserId },
-        { sort: { score: -1, name: 1 } }
+        { sort: { score: -1, firstname: 1 } }
       );
     }
   });
@@ -33,65 +40,94 @@ if (Meteor.isClient) {
       Meteor.call("removePlayer", instance.data.Player._id);
     }
   });
+  Template.addPlayerForm.onRendered(function() {
+    $(document).foundation();
+  });
   Template.addPlayerForm.events({
-    "submit form": function(event) {
-      event.preventDefault();
-      var playerNameVar = event.target.playerName.value;
+    "click #submitPlayer": function(event) {
+      console.log("PREVENTED DEFAULT");
+      // event.preventDefault();
+      let playerNameVar = event.target.playerName.value;
+      let playerLastNameVar = event.target.playerLastName.value;
+      let disciplineVar = event.target.discipline.value;
       let error = [];
-      let exists = PlayersList.findOne({ name: playerNameVar });
+      let exists = PlayersList.findOne({
+        firstname: playerNameVar,
+        lastname: playerLastNameVar
+      });
       if (exists) error.push("Sorry that user already exists.");
       if (playerNameVar.length < 6) {
         error.push("Name is to short.");
       }
-      if (playerNameVar.length > 36) {
+      if (playerLastNameVar.length < 6) {
+        error.push("Lastname is to short.");
+      }
+      if (playerNameVar.length > 25) {
         error.push("Name is to long.");
+      }
+      if (playerLastNameVar.length > 25) {
+        error.push("Lastname is to long.");
+      }
+      if (!disciplines.includes(disciplineVar)) {
+        error.push("Choose a valid discipline.");
       }
       if (error.length) alert(error);
       else {
-        Meteor.call("createPlayer", playerNameVar);
+        Meteor.call(
+          "createPlayer",
+          playerNameVar,
+          playerLastNameVar,
+          disciplineVar
+        );
       }
       event.target.playerName.value = "";
+      event.target.playerLastName.value = "";
     }
   });
-  Meteor.subscribe("thePlayers");
-}
 
-Meteor.methods({
-  createPlayer: function(playerNameVar) {
-    check(playerNameVar, String);
-    var currentUserId = Meteor.userId();
-    if (currentUserId) {
-      PlayersList.insert({
-        name: playerNameVar,
-        score: 0,
-        createdBy: currentUserId
+  Template.editPlayerForm.onRendered(function() {
+    $(document).foundation();
+  });
+
+  Template.editPlayerForm.events({
+    "click #editPlayer": function(event) {
+      console.log("PREVENTED DEFAULT");
+      // event.preventDefault();
+      let playerNameVar = event.target.playerName.value;
+      let playerLastNameVar = event.target.playerLastName.value;
+      let disciplineVar = event.target.discipline.value;
+      let error = [];
+      let exists = PlayersList.findOne({
+        firstname: playerNameVar,
+        lastname: playerLastNameVar
       });
-    }
-  },
-  removePlayer: function(selectedPlayerId) {
-    check(selectedPlayerId, String);
-    var currentUserId = Meteor.userId();
-    if (currentUserId) {
-      PlayersList.remove({
-        _id: selectedPlayerId,
-        createdBy: currentUserId
-      });
-    }
-  },
-  updateScore: function(selectedPlayerId, scoreValue) {
-    check(selectedPlayer, String);
-    check(scoreValue, Number);
-    var currentUserId = Meteor.userId();
-    if (currentUserId) {
-      let currentUser = PlayersList.findOne({ _id: selectedPlayerId });
-      let currentScore = currentUser.score;
-      if (currentScore + scoreValue < 0) {
-        alert("Score can't be negative!");
+      if (exists) error.push("Sorry that user already exists.");
+      if (playerNameVar.length < 6) {
+        error.push("Name is to short.");
       }
-      PlayersList.update(
-        { _id: selectedPlayerId, createdBy: currentUserId },
-        { $inc: { score: scoreValue } }
-      );
+      if (playerLastNameVar.length < 6) {
+        error.push("Lastname is to short.");
+      }
+      if (playerNameVar.length > 25) {
+        error.push("Name is to long.");
+      }
+      if (playerLastNameVar.length > 25) {
+        error.push("Lastname is to long.");
+      }
+      if (!disciplines.includes(disciplineVar)) {
+        error.push("Choose a valid discipline.");
+      }
+      if (error.length) alert(error);
+      else {
+        Meteor.call(
+          "editPlayer",
+          playerNameVar,
+          playerLastNameVar,
+          disciplineVar
+        );
+      }
+      event.target.playerName.value = "";
+      event.target.playerLastName.value = "";
     }
-  }
-});
+  });
+}

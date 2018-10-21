@@ -1,0 +1,20 @@
+<template name="leaderboard">
+  {{#if currentUser}}
+  <div class="formular">{{> addPlayerForm}}</div>
+  <ul>
+    <div class="values">
+      <div>Firstname</div>
+      <div>Lastname</div>
+      <div>Discipline</div>
+      <div>Points</div>
+    </div>
+    {{#each player in players}}
+    <div class="player">
+      {{> PlayerCard Player=player}}
+    </div>
+    {{/each}}
+  </ul>
+  {{else}}
+  <p class="notloggedin">You must be logged-in to see this content.</p>
+  {{/if}}
+</template>

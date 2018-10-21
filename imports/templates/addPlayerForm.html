@@ -1,0 +1,28 @@
+<template name="addPlayerForm">
+    <div class="reveal" id="exampleModal1" data-reveal>
+        <!-- <form method="GET"> -->
+        <!-- Fix things with Phil -->
+        <b>Add a Player</b>
+        <div class="input-group">
+            <label>Firstname:
+                <input type="text" name="playerName" placeholder="Max"></label>
+            <label>Lastname:
+                <input type="text" name="playerLastName" placeholder="Mustermann"></label>
+            <label>Select Discipline
+                <select name="discipline">
+                    <option value="" disabled selected>Select a discipline</option>
+                    <option value="Football">Football</option>
+                    <option value="Ice Hockey">Ice Hockey</option>
+                    <option value="Athletics">Athletics</option>
+                </select>
+            </label>
+            <a class="successButton" href="#" id="submitPlayer">Add Player</a>
+            <!-- <button class="button submit" id="tits">Add Player</button> -->
+        </div>
+        <!-- </form> -->
+        <button class="close-button" data-close aria-label="Close modal" type="button">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+    <button class="button" data-open="exampleModal1">Add Player</button>
+</template>

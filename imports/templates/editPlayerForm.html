@@ -1,0 +1,25 @@
+<template name="editPlayerForm">
+    <div class="reveal" id="exampleModal2" data-reveal>
+        <b>Edit Player</b>
+        <div class="input-group">
+            <!-- Read the Values into the form -->
+            <label>Firstname:
+                <input type="text" name="playerName" {{Player.firstname.value}}></label>
+            <label>Lastname:
+                <input type="text" name="playerLastName" placeholder=playerLastNameVar></label>
+            <label>Select Discipline
+                <select name="discipline">
+                    <option value="" disabled selected>"discipline"</option>
+                    <option value="Football">Football</option>
+                    <option value="Ice Hockey">Ice Hockey</option>
+                    <option value="Athletics">Athletics</option>
+                </select>
+            </label>
+            <a class="editButton" href="#" id="editPlayer">Confirm</a>
+        </div>
+        <button class="close-button" data-close aria-label="Close modal" type="button">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+    <button class="small button" data-open="exampleModal2">Edit Player</button>
+</template>

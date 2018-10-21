@@ -1,0 +1,17 @@
+<template name="PlayerCard">
+    <div class="playerCard">
+        <div>{{Player.firstname}}</div>
+        <div>{{Player.lastname}} </div>
+        <div>{{Player.discipline}}</div>
+        <div>{{Player.score}}</div>
+        <div>
+            <button class="button success small increment">Give 5 Points</button>
+            <button class="button warning small decrement">Take 5 Points</button>
+        </div>
+        <div class="formular">
+            {{> editPlayerForm}}
+            <!--{{> removePlayerForm}}
+            <button class="button alert small remove">Remove Player</button></div> -->
+        </div>
+    </div>
+</template>
