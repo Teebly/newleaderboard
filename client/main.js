@@ -2,6 +2,12 @@ import { Template } from "meteor/templating";
 import { ReactiveVar } from "meteor/reactive-var";
 import Foundation from "foundation-sites/dist/js/foundation.js";
 import "foundation-sites/dist/css/foundation.css";
+import { library, dom } from "@fortawesome/fontawesome-svg-core";
+import { faPlus } from "@fortawesome/free-solid-svg-icons";
+import { faMinus } from "@fortawesome/free-solid-svg-icons";
+import { faPencilAlt } from "@fortawesome/free-solid-svg-icons";
+import { faTrashAlt } from "@fortawesome/free-solid-svg-icons";
+
 import "/imports/main.html";
 import "/imports/styles/app.css";
 import "/imports/templates/leaderboard.html";
@@ -13,6 +19,13 @@ import "/imports/templates/removePlayerForm.html";
 PlayersList = new Mongo.Collection("players");
 
 const disciplines = ["Football", "Ice Hockey", "Athletics"];
+
+library.add(faPlus);
+library.add(faMinus);
+library.add(faPencilAlt);
+library.add(faTrashAlt);
+
+dom.watch();
 
 if (Meteor.isClient) {
   Meteor.subscribe("thePlayers");
@@ -80,8 +93,6 @@ if (Meteor.isClient) {
           disciplineVar
         );
       }
-      // $("[name=playerName]").val() = "";
-      // $("[name=playerLastName]").val() = "";
     }
   });
 
@@ -89,16 +100,9 @@ if (Meteor.isClient) {
     $(document).foundation();
   });
 
-  Template.addPlayerForm.helpers({
-    zehelper: function() {
-      console.log(" helper called ");
-    }
-  });
-
   Template.editPlayerForm.events({
     "click #editPlayer": function(event) {
-      console.log("PREVENTED DEFAULT");
-      // event.preventDefault();
+      event.preventDefault();
       let playerNameVar = event.target.playerName.value;
       let playerLastNameVar = event.target.playerLastName.value;
       let disciplineVar = event.target.discipline.value;
@@ -132,8 +136,6 @@ if (Meteor.isClient) {
           disciplineVar
         );
       }
-      event.target.playerName.value = "";
-      event.target.playerLastName.value = "";
     }
   });
   Template.removePlayerForm.onRendered(function() {
@@ -141,12 +143,9 @@ if (Meteor.isClient) {
   });
   Template.removePlayerForm.events({
     "click #removePlayer": function(event) {
-      Meteor.call(
-        "removePlayer",
-        $("[name=playerName]").val(),
-        $("[name=playerLastName]").val(),
-        $("[name=discipline] option:checked").val()
-      );
+      PlayersList.remove({
+        player: _id
+      });
     }
   });
 }

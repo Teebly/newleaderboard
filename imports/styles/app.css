@@ -29,23 +29,6 @@ body {
 .playerCard:hover {
   background-color: rgb(190, 190, 190);
 }
-.button.success {
-  color: white;
-  background-color: rgba(100, 200, 100, 0.75);
-  margin-bottom: 0rem;
-}
-.button.warning {
-  color: white;
-  background-color: rgb(235, 240, 120, 0.75);
-  margin-bottom: 0rem;
-}
-.button.alert {
-  margin-bottom: 0rem;
-  background-color: rgb(235, 100, 100, 0.75);
-}
-.button.alert:hover {
-  color: black;
-}
 .button:hover {
   color: black;
 }
@@ -56,9 +39,10 @@ body {
 .reveal {
   width: fit-content;
 }
-.button.small {
-  margin-bottom: 0rem;
+.fa-trash-alt:hover {
+  color: red;
 }
-.button.cancel {
-  margin-bottom: 0rem;
+svg {
+  margin-left: 0.5rem;
+  margin-right: 0.5rem;
 }

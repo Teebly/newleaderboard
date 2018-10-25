@@ -9,6 +9,8 @@
   },
   "dependencies": {
     "@babel/runtime": "^7.1.2",
+    "@fortawesome/fontawesome-svg-core": "^1.2.6",
+    "@fortawesome/free-solid-svg-icons": "^5.4.1",
     "bcrypt": "^3.0.2",
     "foundation-sites": "^6.5.0-rc.4",
     "jquery": "^3.3.1",

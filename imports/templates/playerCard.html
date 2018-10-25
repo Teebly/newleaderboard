@@ -5,12 +5,12 @@
         <div>{{Player.discipline}}</div>
         <div>{{Player.score}}</div>
         <div>
-            <button class="button success small increment">Give 5 Points</button>
-            <button class="button warning small decrement">Take 5 Points</button>
+            <i class="fas fa-plus increment"></i>
+            <i class="fas fa-minus decrement"></i>
         </div>
         <div class="formular">
-            <button class="button small" data-open="exampleModal2">Edit Player</button>
-            <button class="button small" data-open="exampleModal3">Remove Player</button>
+            <i class="fas fa-pencil-alt" data-open="edit_{{Player._id}}"></i>
+            <i class="fas fa-trash-alt" data-open="remove_{{Player._id}}"></i>
         </div>
     </div>
 </template>
