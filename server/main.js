@@ -8,26 +8,51 @@ PlayersList = new Mongo.Collection("players");
 
 if (Meteor.isServer) {
   Meteor.publish("thePlayers", function() {
-    var currentUserId = this.userId;
+    let currentUserId = this.userId;
     return PlayersList.find({ createdBy: currentUserId });
   });
 }
 
 Meteor.methods({
-  createPlayer: function(playerNameVar) {
+  createPlayer: function(playerNameVar, playerLastNameVar, disciplineVar) {
     check(playerNameVar, String);
-    var currentUserId = Meteor.userId();
+    check(playerLastNameVar, String);
+    check(disciplineVar, String);
+    let currentUserId = Meteor.userId();
     if (currentUserId) {
       PlayersList.insert({
-        name: playerNameVar,
+        firstname: playerNameVar,
+        lastname: playerLastNameVar,
+        discipline: disciplineVar,
         score: 0,
         createdBy: currentUserId
       });
     }
   },
+  editPlayer: function(playerNameVar, playerLastNameVar, disciplineVar) {
+    check(playerNameVar, String);
+    check(playerLastNameVar, String);
+    check(disciplineVar, String);
+    let currentUserId = Meteor.userId();
+    if (currentUserId) {
+      PlayersList.update(
+        {
+          _id: selectedPlayer,
+          createdBy: currentUserId
+        },
+        {
+          $set: {
+            firstname: playerNameVar,
+            lastname: playerLastNameVar,
+            discipline: disciplineVar
+          }
+        }
+      );
+    }
+  },
   removePlayer: function(selectedPlayer) {
     check(selectedPlayer, String);
-    var currentUserId = Meteor.userId();
+    let currentUserId = Meteor.userId();
     if (currentUserId) {
       PlayersList.remove({
         _id: selectedPlayer,
@@ -38,10 +63,9 @@ Meteor.methods({
   updateScore: function(selectedPlayer, scoreValue) {
     check(selectedPlayer, String);
     check(scoreValue, Number);
-    var currentUserId = Meteor.userId();
+    let currentUserId = Meteor.userId();
     if (currentUserId) {
       let currentUser = PlayersList.findOne({ _id: selectedPlayer });
-      //one line missing. if(currentUser="")return;
       let currentScore = currentUser.score;
       if (currentScore + scoreValue < 0) {
         alert("Score can't be negative!");

@@ -1,0 +1,28 @@
+<template name="addPlayerForm">
+    <form name="addPlayer" id="addPlayer">
+        <b>Add a Player</b>
+
+        <label>Firstname:
+            <input type="text" name="playerName" placeholder="Max">
+        </label>
+        <label>Lastname:
+            <input type="text" name="playerLastName" placeholder="Mustermann">
+        </label>
+        <label>Select Discipline
+            <select name="discipline">
+                <option value="" disabled selected>Select a discipline</option>
+                <option value="Football">Football</option>
+                <option value="Ice Hockey">Ice Hockey</option>
+                <option value="Athletics">Athletics</option>
+            </select>
+        </label>
+        <div class="footer">
+            <a class="successButton submitButton" href="#" id="submitPlayer">Add Player</a>
+        </div>
+    </form>
+    <button class="close-button" data-close aria-label="Close modal" type="button">
+        <span aria-hidden="true">&times;</span>
+    </button>
+
+
+</template>
