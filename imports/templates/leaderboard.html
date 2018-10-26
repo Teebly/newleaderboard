@@ -1,14 +1,11 @@
 <template name="leaderboard">
   {{#if currentUser}}
-  <div class="formular">
-    <button class="button" data-open="exampleModal1">Add Player</button>
-  </div>
   <ul>
     <div class="values">
-      <div>Firstname</div>
-      <div>Lastname</div>
-      <div>Discipline</div>
-      <div>Points</div>
+      <div><b>Firstname</b></div>
+      <div><b>Lastname</b></div>
+      <div><b>Discipline</b></div>
+      <div><b>Points</b></div>
     </div>
     {{#each player in players}}
     <div class="player">
@@ -25,8 +22,4 @@
   {{else}}
   <p class="notloggedin">You must be logged-in to see this content.</p>
   {{/if}}
-
-  <div class="reveal" id="exampleModal1" data-reveal>
-    {{> addPlayerForm}}
-  </div>
 </template>

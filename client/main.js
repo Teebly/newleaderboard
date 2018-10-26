@@ -6,7 +6,7 @@ import { library, dom } from "@fortawesome/fontawesome-svg-core";
 import { faPlus } from "@fortawesome/free-solid-svg-icons";
 import { faMinus } from "@fortawesome/free-solid-svg-icons";
 import { faPencilAlt } from "@fortawesome/free-solid-svg-icons";
-import { faTrashAlt } from "@fortawesome/free-solid-svg-icons";
+import { faTrashAlt } from "@fortawesome/free-regular-svg-icons";
 
 import "/imports/main.html";
 import "/imports/styles/app.css";
@@ -92,12 +92,21 @@ if (Meteor.isClient) {
           playerLastNameVar,
           disciplineVar
         );
+        PlayerNameVar = "";
+        playerLastNameVar = "";
       }
     }
   });
 
   Template.editPlayerForm.onRendered(function() {
     $(document).foundation();
+    // console.log(this);
+
+    console.log(this.data.Player.discipline);
+    $("#discipline option[value='" + this.data.Player.discipline + "']").prop(
+      "selected",
+      true
+    );
   });
 
   Template.editPlayerForm.events({

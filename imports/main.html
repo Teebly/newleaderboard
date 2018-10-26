@@ -3,12 +3,19 @@
 </head>
 
 <body>
-  <div class="title-bar">
-    <div class="title-bar-left">
-      <button class="menu-icon" type="button"></button>
-      <span class="title-bar-title">Leaderboard</span>
+  <div class="top-bar">
+    <div class="top-bar-left">
+      <!-- <button class="menu-icon" type="button"></button> -->
+      <span class="top-bar-title"><b>Leaderboard</b>
+        <button class="button" id="addPlayerModalButton" data-open="AddPlayerModal">Add Player</button>
+      </span>
+
     </div>
-    <div class="title-bar-right">{{>loginButtons}}</div>
+    <div class="top-bar-right">{{>loginButtons}}</div>
   </div>
   <div class="content">{{> leaderboard}}</div>
+
+  <div class="reveal" id="AddPlayerModal" data-reveal>
+    {{> addPlayerForm}}
+  </div>
 </body>
