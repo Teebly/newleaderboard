@@ -21,7 +21,7 @@
   margin: 0.5rem;
   width: fit-content;
 }
-.player:hover {
+.playerCard:hover {
   width: fit-content;
   background-color: #e6e6e6;
 }
