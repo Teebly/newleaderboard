@@ -14,6 +14,12 @@
     <div class="player">
       {{> PlayerCard Player=player}}
     </div>
+    <div class="reveal" id="edit_{{player._id}}" data-reveal>
+      {{> editPlayerForm Player=player}}
+    </div>
+    <div class="reveal" id="remove_{{player._id}}" data-reveal>
+      {{> removePlayerForm Player=player}}
+    </div>
     {{/each}}
   </ul>
   {{else}}
@@ -22,11 +28,5 @@
 
   <div class="reveal" id="exampleModal1" data-reveal>
     {{> addPlayerForm}}
-  </div>
-  <div class="reveal" id="exampleModal2" data-reveal>
-    {{> editPlayerForm}}
-  </div>
-  <div class="reveal" id="exampleModal3" data-reveal>
-    {{> removePlayerForm}}
   </div>
 </template>
