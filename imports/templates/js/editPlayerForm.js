@@ -18,7 +18,7 @@ Template.editPlayerForm.onRendered(function() {
 Template.editPlayerForm.events({
   "click #editPlayerButton": function(event) {
     event.preventDefault();
-    let playerNameVar = $("input [name=playerName]").val();
+    let editplayerNameVar = $("input [name=editPlayerName]").val();
     // let playerNameVar = event.target.playerName.value;
     // let playerLastNameVar = event.target.playerLastName.value;
     // let disciplineVar = event.target.discipline.value;
@@ -32,7 +32,7 @@ Template.editPlayerForm.events({
     // let playerNameVar = this.data.Player.firstname;
     // let playerLastNameVar = this.data.Player.lastname;
     // let disciplineVar = this.data.Player.discipline;
-    console.log(playerNameVar);
+    console.log(editplayerNameVar);
     // let error = [];
     // let exists = PlayersList.findOne({
     //   firstname: playerNameVar,
