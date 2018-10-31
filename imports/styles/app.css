@@ -22,8 +22,12 @@
   width: fit-content;
 }
 .playerCard:hover {
+<<<<<<< HEAD
   width: fit-content;
   background-color: #e6e6e6;
+=======
+  background-color: rgb(190, 190, 190);
+>>>>>>> master
 }
 .button:hover {
   color: black;
@@ -35,6 +39,7 @@
 .reveal {
   width: fit-content;
 }
+<<<<<<< HEAD
 #removeButton:hover {
   color: red;
 }
@@ -56,4 +61,12 @@
 }
 .deletePlayer {
   width: 20rem;
+=======
+.fa-trash-alt:hover {
+  color: red;
+}
+svg {
+  margin-left: 0.5rem;
+  margin-right: 0.5rem;
+>>>>>>> master
 }

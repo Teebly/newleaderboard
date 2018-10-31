@@ -1,0 +1,16 @@
+<template name="PlayerCard">
+    <div class="playerCard">
+        <div>{{Player.firstname}}</div>
+        <div>{{Player.lastname}} </div>
+        <div>{{Player.discipline}}</div>
+        <div>{{Player.score}}</div>
+        <div>
+            <i class="fas fa-plus increment"></i>
+            <i class="fas fa-minus decrement"></i>
+        </div>
+        <div class="formular">
+            <i class="fas fa-pencil-alt" data-open="edit_{{Player._id}}"></i>
+            <i class="fas fa-trash-alt" data-open="remove_{{Player._id}}"></i>
+        </div>
+    </div>
+</template>
