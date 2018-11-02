@@ -1,12 +1,12 @@
 <template name="editPlayerForm">
-    <form name="editPlayer" id="editPlayer">
+    <form id="editPlayer_{{Player._id}}" class="editForm">
         <b>Edit Player</b>
 
         <label>Firstname:
-            <input type="text" id="editPlayerName_Id" name="editPlayerName" value="{{Player.firstname}}">
+            <input type="text" playerId={{Player._id}} id="editPlayerFirstName" value="{{Player.firstname}}">
         </label>
         <label>Lastname:
-            <input type="text" name="editPlayerLastName" value="{{Player.lastname}}">
+            <input type="text" playerId={{Player._id}} id="editPlayerLastName" value="{{Player.lastname}}">
         </label>
         <label>Select Discipline
             <select name="discipline" id="discipline">
@@ -16,7 +16,7 @@
             </select>
         </label>
         <div class="footer">
-            <a class="editButton submitButton" href="#" id="editPlayerButton">Confirm</a>
+            <input type="submit" class="editButton submitButton" href="#" value="Confirm">
         </div>
     </form>
     <button class="close-button" data-close aria-label="Close modal" type="button">
