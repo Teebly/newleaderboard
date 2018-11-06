@@ -1,25 +1,25 @@
 <template name="leaderboard">
-  {{#if currentUser}}
-  <ul>
-    <div class="values">
-      <div><b>Firstname</b></div>
-      <div><b>Lastname</b></div>
-      <div><b>Discipline</b></div>
-      <div><b>Points</b></div>
-    </div>
-    {{#each player in players}}
-    <div class="player">
-      {{> PlayerCard Player=player}}
-    </div>
+
+  <div class="player">
+    <div><b>Firstname</b></div>
+    <div><b>Lastname</b></div>
+    <div><b>Discipline</b></div>
+    <div><b>Points</b></div>
+    <div></div>
+    <div></div>
+  </div>
+  {{#each player in players}}
+    {{> PlayerCard Player=player}}
+  {{/each}}
+  {{#each player in players}}
     <div class="reveal" id="edit_{{player._id}}" data-reveal>
       {{> editPlayerForm Player=player}}
     </div>
     <div class="reveal" id="remove_{{player._id}}" data-reveal>
       {{> removePlayerForm Player=player}}
     </div>
-    {{/each}}
-  </ul>
-  {{else}}
-  <p class="notloggedin">You must be logged-in to see this content.</p>
-  {{/if}}
+  {{/each}}
+  <!-- {{else}}
+    <p class="notloggedin">You must be logged-in to see this content.</p>
+  {{/if}} -->
 </template>
