@@ -23,7 +23,6 @@
   padding: 0.5rem;
 
   /* width: fit-content; */
-
 }
 .player div {
   overflow: hidden;
@@ -56,8 +55,4 @@
 /* mobile screen for example */
 
 @media only screen and (max-width: 600px) {
-  body {
-    /* background-color: lightblue; */
-
-  }
 }
