@@ -5,15 +5,22 @@
 <body>
   <div class="top-bar">
     <div class="top-bar-left">
-      <span class="top-bar-title"><b>Leaderboard</b>
-        <button class="button" id="addPlayerModalButton" data-open="AddPlayerModal">Add Player</button>
-      </span>
+      <ul class="dropdown menu" data-dropdown-menu>
+        <li class="menu-text">Leaderboard</li>
+        <li><a href="#" class="button small" id="addPlayerModalButton" data-open="AddPlayerModal">Add Player</a></li>
 
+      </ul>
     </div>
-    <div class="top-bar-right">{{>loginButtons}}</div>
+    <!-- <div class="top-bar-right"></div> -->
   </div>
   <div class="reveal" id="AddPlayerModal" data-reveal>
     {{> addPlayerForm}}
   </div>
-  <div class="content">{{> leaderboard}}</div>
+  <div class="content">
+    {{#if currentUser}}
+      {{> leaderboard}}
+      {{ else}}
+      {{>loginButtons}}
+    {{/if}}
+  </div>
 </body>

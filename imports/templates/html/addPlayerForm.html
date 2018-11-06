@@ -1,7 +1,6 @@
 <template name="addPlayerForm">
     <form name="addPlayer" id="addPlayer">
-        <b>Add a Player</b>
-
+        <div class="modalHeader">Add a Player</div>
         <label>Firstname:
             <input type="text" name="playerName" placeholder="Max">
         </label>
@@ -17,7 +16,7 @@
             </select>
         </label>
         <div class="footer">
-            <a class="successButton submitButton" href="#" id="submitPlayer">Add Player</a>
+            <a class="button small successButton submitButton" href="#" id="submitPlayer">Add Player</a>
         </div>
     </form>
     <button class="close-button" data-close aria-label="Close modal" type="button">
