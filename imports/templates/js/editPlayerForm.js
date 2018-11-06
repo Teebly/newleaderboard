@@ -3,36 +3,78 @@ const disciplines = ["Football", "Ice Hockey", "Athletics"];
 Template.editPlayerForm.onRendered(function() {
   $(document).foundation();
 
-  // console.log(this.data.Player.discipline);
-  // console.log(this.data.Player._id);
+  // $(document).ready(function() {
+  //   $(".editButton").click(function() {
+  //     $(":input", "#editPlayer_{{Player._id}}").each(function() {
+  //       alert(this.name + ": " + this.value);
+  //     });
+  //   });
+  // });
 
-  //   $("").on("mouseover", function() {
-  //     alert("Hello World");
-  //   $("#discipline option[value='" + this.data.Player.discipline + "']").prop(
-  //     "selected",
-  //     true
-  //   );
-  //   //   });
-});
+  // $("#new_user_form *")
+  //   .filter(":input")
+  //   .each(function() {
+  //     //your code here
+  //   });
 
-Template.editPlayerForm.events({
-  "click #editPlayerButton": function(event) {
-    event.preventDefault();
-    let editplayerNameVar = $("input [name=editPlayerName]").val();
-    // let playerNameVar = event.target.playerName.value;
-    // let playerLastNameVar = event.target.playerLastName.value;
-    // let disciplineVar = event.target.discipline.value;
-    // let playerNameVar = $("[name=playerName]").val();
-    // let playerLastNameVar = $("[name=playerLastName]").val();
-    // let disciplineVar = $("[name=discipline] option:checked").val();
-    // let playerNameVar = $(
-    //   "#playerName_Id value+'" + this.data.Player.firstname + "'"
-    // ).val();
-    let playerLastNameVar = $("[name=playerLastName]").val();
-    // let playerNameVar = this.data.Player.firstname;
-    // let playerLastNameVar = this.data.Player.lastname;
-    // let disciplineVar = this.data.Player.discipline;
-    console.log(editplayerNameVar);
+  // let editDisciplineVar = $(
+  //   "#discipline option[value='" + this.data.Player.discipline + "']"
+  // )
+  //   .prop("selected", true)
+  //   .val();
+  // console.log(editDisciplineVar);
+
+  // $("select", ".editForm").each(function() {
+  //   console.log(this.value);
+  // });
+}),
+  Template.editPlayerForm.helpers({
+    selectedDiscipline() {
+      let editDisciplineVar = $(
+        "#discipline option[value='" + this.data.Player.discipline + "']"
+      )
+        .prop("selected", true)
+        .val();
+      return console.log(editDisciplineVar);
+    }
+  }),
+  Template.editPlayerForm.events({
+    "submit .editForm": function(event) {
+      event.preventDefault();
+
+      console.log("On Submit", event);
+      let editPlayerFormId = event.currentTarget.id;
+      console.log(editPlayerFormId);
+      let editPlayerFirstNameVar = $(event.currentTarget)
+        .find("input#editPlayerFirstName")
+        .val();
+
+      let editPlayerLastNameVar = $(event.currentTarget)
+        .find("input#editPlayerLastName")
+        .val();
+
+      let editDisciplineVar = $(event.currentTarget)
+        .find("select#discipline")
+        .find(":selected")
+        .val();
+
+      console.log(
+        editPlayerFirstNameVar,
+        editPlayerLastNameVar,
+        editDisciplineVar
+      );
+    }
+    // "click #editPlayerButton": function(event) {
+    //   event.preventDefault();
+    //   console.log("event", event);
+    //   // tmpEdit = $("form#editPlayer").this.attr("playerId");
+    //   tmpFirst = $("input#editPlayerFirstName");
+    //   let editPlayerFirstNameVar = tmpFirst.val();
+    //   tmpLast = $("input#editPlayerLastName");
+    //   let editPlayerLastNameVar = tmpLast.val();
+    //   let playerId = tmpFirst.attr("playerId");
+    //   console.log(editPlayerFirstNameVar, editPlayerLastNameVar, playerId);
+    // console.log(tmpEdit);
     // let error = [];
     // let exists = PlayersList.findOne({
     //   firstname: playerNameVar,
@@ -60,8 +102,9 @@ Template.editPlayerForm.events({
     //     "editPlayer",
     //     playerNameVar,
     //     playerLastNameVar,
-    //     disciplineVar
+    //     disciplineVar,
+    //     playerId
     //   );
     // }
-  }
-});
+    //}
+  });

@@ -7,19 +7,20 @@
 .values {
   display: grid;
 
-  grid-template-columns: 15rem 15rem 15rem 15rem;
+  grid-template-columns: 15% 15% 15% 10%;
   grid-template-rows: auto;
   grid-column-gap: 1rem;
   grid-row-gap: 1rem;
 }
 .playerCard {
   display: grid;
-  grid-template-columns: 15rem 15rem 15rem 10rem 15rem 7.5rem;
+  /* grid-template-columns: 15rem 15rem 15rem 10rem 15rem 7.5rem; */
+  grid-template-columns: 15% 15% 15% 10% 15% 7.5%;
   grid-template-rows: auto;
   grid-column-gap: 1rem;
   grid-row-gap: 1rem;
   margin: 0.5rem;
-  width: fit-content;
+  /*width: fit-content; */
 }
 .playerCard:hover {
   width: fit-content;
@@ -56,4 +57,10 @@
 }
 .deletePlayer {
   width: 20rem;
+}
+/* mobile screen for example */
+@media only screen and (max-width: 1366px) {
+  .playerCard {
+    grid-template-columns: 15% 15% 15% 10% 15% 15%;
+  }
 }
