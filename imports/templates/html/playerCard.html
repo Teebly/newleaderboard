@@ -1,15 +1,15 @@
 <template name="PlayerCard">
-    <div class="playerCard">
+    <div class="player">
         <div>{{Player.firstname}}</div>
         <div>{{Player.lastname}} </div>
         <div>{{Player.discipline}}</div>
         <div id="playerPoints">{{Player.score}}</div>
-        <div style="font-size: 1.5rem;">
+        <div>
             <i class="fas fa-plus increment fa-fw" id="plusButton"></i>
             <i class="fas fa-minus decrement fa-fw" id="minusButton"></i>
         </div>
-        <div class="formular" style="font-size: 1.5rem;">
-            <i class="fas fa-pencil-alt fa-fw" id="editButton" data-open="edit_{{Player._id}}"></i>
+        <div class="formular">
+            <i class="fas fa-pencil-alt fa-fw " id="editButton" data-open="edit_{{Player._id}}"></i>
             <i class="far fa-trash-alt fa-fw" id="removeButton" data-open="remove_{{Player._id}}"></i>
         </div>
     </div>
